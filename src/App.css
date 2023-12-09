@@ -41,7 +41,20 @@
   margin-top: 100px;
   margin-bottom: 1rem;
 }
-.bg-dark {
-  background-color: #0f26d1!important;
-  
+
+.text:hover{
+  color: red;
+}
+.navbar-expand-lg .navbar-collapse {
+
+    display: flex!important;
+    flex-basis: auto;
+}
+.gia{
+  color:red;
+}
+.carousel-image {
+  width: 100%; /* Set the desired width */
+  height: 200px; /* Set the desired height */
+  object-fit: cover; /* Ensure the image covers the entire container */
 }
