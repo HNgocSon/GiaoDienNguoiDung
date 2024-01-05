@@ -7,17 +7,18 @@ import Layout from './components/giao-dien-cpn/layout';
 import ChiTietSanPham from './components/chi-tiet-san-pham-cpn/chi-tiet';
 import SanPham from './pages/san-pham';
 import GioHang from './pages/giohang';
-import LoginComponent from './pages/login';
+import Login from './components/tai-khoan/dang-nhap';
+import Register from './components/tai-khoan/dang-ky';
 function App() {
   return (
     <>
-
       <Routes>
         <Route path="/" element={<SanPham/>}/>
         <Route path="/giohang" element={<GioHang/>} />
         <Route path="/tieptuc" element={<SanPham/>}/>
         <Route path="/chitiet/:id" element={<ChiTietSanPham/>} />
-        <Route path="/login" element={<LoginComponent/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login/>} />
       </Routes>
       <Layout />
 
