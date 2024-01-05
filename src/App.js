@@ -1,25 +1,28 @@
 import { Routes,Route } from 'react-router-dom';
-
 import './App.css';
-import './bootstrap-5.2.3/css/bootstrap.min.css';
 import React from 'react';
-import Layout from './components/giao-dien-cpn/layout';
+import Footer from './components/giao-dien-cpn/footer';
 import ChiTietSanPham from './components/chi-tiet-san-pham-cpn/chi-tiet';
-import SanPham from './pages/san-pham';
+import SanPhamPage from './pages/san-pham-page';
 import GioHang from './pages/giohang';
-import LoginComponent from './pages/login';
+import DangKyPage from './pages/dang-ky-page';
+import DangNhapPage from './pages/dang-nhap-page';
+import ResetMatKhauPage from './pages/reset-mat-khau-page';
+import TrangChu from './pages/trang-chu.page';
+
 function App() {
   return (
     <>
-
-      <Routes>
-        <Route path="/" element={<SanPham/>}/>
-        <Route path="/giohang" element={<GioHang/>} />
-        <Route path="/tieptuc" element={<SanPham/>}/>
-        <Route path="/chitiet/:id" element={<ChiTietSanPham/>} />
-        <Route path="/login" element={<LoginComponent/>} />
+      <Routes>  
+          <Route path="/" element={<TrangChu/>}/>
+          <Route path="/loai-san-pham/:id" element={<SanPhamPage/>} />
+          <Route path="/giohang" element={<GioHang/>} />
+          <Route path="/chitiet/:id" element={<ChiTietSanPham/>} />
+          <Route path="/dang-nhap" element={<DangNhapPage/>} />
+          <Route path="/dang-ky" element={<DangKyPage/>} />
+          <Route path="/forgot-password" element={<ResetMatKhauPage/>} />
       </Routes>
-      <Layout />
+      <Footer/>
 
     </>
   );

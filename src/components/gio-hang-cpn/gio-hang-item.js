@@ -48,10 +48,10 @@ function ThemGioHang(props) {
                     </div>
                     <div className="but mt-3">
                         <button type="button" className="btn btn-secondary">
-                            <NavLink to="/tieptuc" className="nav-link" activeClassName="active">Tiếp Tục Mua Hàng</NavLink>
+                            <NavLink to="/" className="nav-link" activeclassname ="active">Tiếp Tục Mua Hàng</NavLink>
                         </button>
                         <button type="button" className="btn btn-primary">
-                            <NavLink to="/thanh-toan" className="nav-link" activeClassName="active" onClick={DatHang}>Thanh Toán</NavLink>
+                            <NavLink to="/thanh-toan" className="nav-link" activeclassname ="active" onClick={DatHang}>Thanh Toán</NavLink>
                         </button>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ function ThemGioHang(props) {
         }
         return <div className="container mt-5">Không có sản phẩm nào trong giỏ hàng
         <button type="button" className="btn btn-secondary">
-            <NavLink to="/tieptuc" className="nav-link" activeClassName="active">Quay Lại</NavLink>
+            <NavLink to="/" className="nav-link" activeclassname ="active">Quay Lại</NavLink>
         </button>
         </div>;
         

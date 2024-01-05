@@ -1,53 +1,69 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button, FormControl, InputGroup } from 'react-bootstrap';
-import { FaUser, FaSignOutAlt } from 'react-icons/fa';
-import { BsCart4, BsSquareFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom'; 
+import { useEffect,useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../../App.css';
-import '../../bootstrap-5.2.3/css/bootstrap.min.css';
-
+import '../../stylecss/Header.css';
 const Header = () => {
+
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+
+      const accessToken = localStorage.getItem('dang_nhap_token');
+      setIsLoggedIn(!!accessToken);
+      
+      if (!accessToken) {
+        setIsLoggedIn(false); 
+      }
+    }, [navigate]);
+  
+    const handleLogout = () => {
+
+      localStorage.removeItem('dang_nhap_token');
+      setIsLoggedIn(false); 
+      navigate('/dang-nhap'); 
+
+    };
+    
+
   return (
-    <Navbar bg="warning" expand="lg" variant="light" className="mb-4">
-      <Container>
-        <Navbar.Brand className="fw-bold">
-          <BsSquareFill size={30} className="me-2 text-dark" /> PhoneStore
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={NavLink} to="/" className="text-dark">
-              Products
-            </Nav.Link>
-          </Nav>
-          <Nav className="align-items-center">
-            <InputGroup>
-              <FormControl
-                type="text"
-                placeholder="Tìm kiếm"
-                className="mr-sm-2 rounded-pill py-2 px-4 border-0 shadow-sm"
-              />
-              <Button variant="outline-dark" className="rounded-pill py-2 px-4">
-                <BsSquareFill className="me-1 text-dark" /> Search
-              </Button>
-            </InputGroup>
-            <Nav.Link as={NavLink} to="/giohang" className="text-dark me-3">
-              Giỏ Hàng <BsCart4 size={30} className="text-dark" />
-            </Nav.Link>
-            <Button variant="outline-dark" className="me-2">
-              <FaUser className="me-1 text-dark" />
-              <NavLink to="/login" className="text-dark">
-                Login
-              </NavLink>
-            </Button>
-            <Button variant="dark">
-              <FaSignOutAlt className="me-1 text-dark" />
-              Logout
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+     <>
+     <div className='headerAll'>
+      <header className="header">
+      <div className="top-section">
+        <div className="notifications">
+          <span>Thông báo</span>
+        </div>
+        <div className="support">
+          <span>Hỗ trợ</span>
+        </div>
+        {isLoggedIn ? (
+        <div className="auth">
+          <NavLink to="/" className="NavLink" onClick={handleLogout}>Tài Khoản</NavLink>
+        </div>
+        ):(
+        <div className="auth">
+          <NavLink to="/dang-nhap" className="NavLink" >Đăng nhập</NavLink> | <NavLink to="/dang-ky" className="NavLink" >Đăng ký</NavLink>
+        </div>
+        )}
+        
+      </div>
+      <div className="bottom-section">
+        <NavLink to="/" className="NavLink img">
+            <img src="/logo192.png" alt="Logo" />
+        </NavLink>
+        <div className="search">
+          <input type="text" placeholder="Tìm kiếm" />
+          <button className="search-button">Tìm</button>
+        </div>
+        <div className="cart">
+          <NavLink to="/giohang" className="NavLink">Giỏ hàng</NavLink>
+        </div>
+      </div>
+    </header>
+    </div>
+     </>
   );
 };
 
