@@ -1,26 +1,23 @@
 import { Routes,Route } from 'react-router-dom';
-
 import './App.css';
-import './bootstrap-5.2.3/css/bootstrap.min.css';
 import React from 'react';
-import Layout from './components/giao-dien-cpn/layout';
+import Footer from './components/giao-dien-cpn/footer';
 import ChiTietSanPham from './components/chi-tiet-san-pham-cpn/chi-tiet';
-import SanPham from './pages/san-pham';
+import SanPhamPage from './pages/san-pham-page';
 import GioHang from './pages/giohang';
-import Login from './components/tai-khoan/dang-nhap';
-import Register from './components/tai-khoan/dang-ky';
+import LoginComponent from './pages/login';
 function App() {
   return (
     <>
+
       <Routes>
         <Route path="/" element={<SanPham/>}/>
         <Route path="/giohang" element={<GioHang/>} />
         <Route path="/tieptuc" element={<SanPham/>}/>
         <Route path="/chitiet/:id" element={<ChiTietSanPham/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<LoginComponent/>} />
       </Routes>
-      <Layout />
+      <Footer/>
 
     </>
   );

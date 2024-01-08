@@ -1,30 +1,19 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import '../../stylecss/Footer.css'
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-light py-4">
-      <Container>
-        <div className="text-center">
-          <p className="mb-2">Stay Connected</p>
-          <div className="d-flex justify-content-center">
-            <a href="#" className="text-light me-3">
-              Facebook
-            </a>
-            <a href="#" className="text-light me-3">
-              Twitter
-            </a>
-            <a href="#" className="text-light">
-              Instagram
-            </a>
-          </div>
+    <div className='footerAll'>
+    <footer className="footer">
+      <div className="container">
+          <p>Stay Connected</p>
         </div>
-        <hr className="my-3" />
-        <p className="text-center mb-0">
+        <div className='custom-hr'></div>
+        <p >
           &copy; 2023 PhoneStore. All rights reserved.
         </p>
-      </Container>
     </footer>
+    </div>
   );
 };
 

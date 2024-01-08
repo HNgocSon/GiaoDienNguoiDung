@@ -1,5 +1,4 @@
 import React from 'react';
-import TenSP from '../components/san-pham-cpn/ten';
 import Gia from '../components/san-pham-cpn/gia';
 import MoTa from '../components/san-pham-cpn/mo-ta';
 import { NavLink } from 'react-router-dom';

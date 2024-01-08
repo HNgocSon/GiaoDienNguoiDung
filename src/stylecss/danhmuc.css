@@ -1,0 +1,12 @@
+.danh-muc-san-pham {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  
