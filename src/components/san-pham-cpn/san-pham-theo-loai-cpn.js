@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../../stylecss/sanphamtheoloai.css';
-const SanPhamCPN = () => {
+const SanPhamTheoLoaiCPN = () => {
   const { id } = useParams();
   const [loaiSanPham, setLoaiSanPham] = useState({});
   const [loading, setLoading] = useState(true);
@@ -21,12 +21,12 @@ const SanPhamCPN = () => {
     fetchData();
   }, [id]);
 
-  function Text(text, maxLength) {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + '...';
-    }
-    return text;
-  }
+  // function Text(text, maxLength) {
+  //   if (text.length > maxLength) {
+  //     return text.substring(0, maxLength) + '...';
+  //   }
+  //   return text;
+  // }    <p className="description">{Text(sanPham.san_pham_bien_the[0].mo_ta, 15)}</p>
   
 
   return (
@@ -45,16 +45,15 @@ const SanPhamCPN = () => {
             )}
             <div className="card-content">
               <p className="name">Tên Sản Phẩm: {sanPham.ten}</p>
-              <p className="description">{Text(sanPham.mo_ta, 15)}</p>
-              <p className="price">Giá: {sanPham.gia}</p>
+              <p className="">Dung Lượng: {sanPham.san_pham_bien_the[0].dung_luong}</p>
+              <p className="price">Giá: {sanPham.san_pham_bien_the[0].gia}</p>
             </div>
           </div>
         ))}
       </div>
     )}
   </div>
-  
   );
 };
 
-export default SanPhamCPN;
+export default SanPhamTheoLoaiCPN;

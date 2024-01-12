@@ -9,4 +9,18 @@
     justify-content: flex-start;
   }
   
-  
+  /* CSS cho phần tử chứa dung lượng */
+.storage-info {
+  display: flex;
+  align-items: center;
+}
+
+/* CSS cho dung lượng của biến thể */
+.storage-variant {
+  margin: 0;
+}
+
+/* CSS cho dấu gạch chéo phân tách giữa hai dung lượng */
+.storage-divider {
+  margin: 0 5px; /* Điều chỉnh khoảng cách giữa dấu gạch chéo và dung lượng */
+}

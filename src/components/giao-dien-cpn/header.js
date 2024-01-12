@@ -18,13 +18,14 @@ const Header = () => {
       }
     }, [navigate]);
   
-    const handleLogout = () => {
+    // const handleLogout = () => {
 
-      localStorage.removeItem('dang_nhap_token');
-      setIsLoggedIn(false); 
-      navigate('/dang-nhap'); 
+    //   localStorage.removeItem('dang_nhap_token');
+    //   setIsLoggedIn(false); 
+    //   navigate('/dang-nhap'); 
 
-    };
+    // };
+    // onClick={handleLogout} 
     
 
   return (
@@ -40,7 +41,7 @@ const Header = () => {
         </div>
         {isLoggedIn ? (
         <div className="auth">
-          <NavLink to="/" className="NavLink" onClick={handleLogout}>Tài Khoản</NavLink>
+          <NavLink to="/tai-khoan" className="NavLink" >Tài Khoản</NavLink>
         </div>
         ):(
         <div className="auth">
