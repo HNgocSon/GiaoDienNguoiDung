@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../stylecss/danhmuc.css';
+import '../../stylecss/sanpham.css';
 import Skeleton from '@mui/material/Skeleton';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -23,8 +24,11 @@ useEffect(() => {
     fetchData();
 }, []);  
 
+  
+
 return (
     <div className="san-pham">
+     
         <div className="card">
             {loading ? (
                 <div className="categories-list">
@@ -32,7 +36,7 @@ return (
                 </div>
             ) : (
                 dsSanPham.map(sanPham => (
-                    <div className="card-item" key={sanPham.id}>
+                    <NavLink key={sanPham.id} to={`/san-pham/${sanPham.id}`} className="card-item">
                         {sanPham.hinh_anh && sanPham.hinh_anh.length > 0 ? (
                             <img className="img" src={`http://localhost:8000/${sanPham.hinh_anh[0].url}`} alt={`Hình ảnh sản phẩm`} />
                         ) : (
@@ -49,7 +53,7 @@ return (
                                 <p className="no-variant">Không có biến thể sản phẩm.</p>
                             )}
                         </div>
-                    </div>
+                    </NavLink>
                 ))
             )}
         </div>

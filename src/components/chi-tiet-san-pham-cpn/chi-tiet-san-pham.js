@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
+import { useParams, NavLink } from 'react-router-dom';
+import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
+import BinhLuan from '../binh-luan-cpn/binh-luan';
+import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
 const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
   const [sanPham, setSanPham] = useState(null);
   const [bienThe, setBienThe] = useState(null);
+  const [openDanhGia, setOpenDanhGia] = useState(false);
 
   useEffect(() => {
 
@@ -16,7 +19,7 @@ const ChiTietSanPhamCPN = () => {
 
         setSanPham(product);
 
-        // Chọn biến thể mặc định (ở đây là biến thể đầu tiên)
+        
         setBienThe(product.san_pham_bien_the[0]);
       } catch (error) {
         console.error('Error fetching product details:', error);
@@ -27,10 +30,10 @@ const ChiTietSanPhamCPN = () => {
   }, [id]);
 
   
-  // Hàm xử lý khi người dùng chọn biến thể
   const chonBienThe = (variant) => {
     setBienThe(variant);
   };
+
 
   return (
     <div>
@@ -49,7 +52,6 @@ const ChiTietSanPhamCPN = () => {
               </li>
             ))}
           </ul>
-
           <h3>Selected Variant:</h3>
           {bienThe && (
             <div>
@@ -65,6 +67,15 @@ const ChiTietSanPhamCPN = () => {
               <img key={index} className="img" src={`http://localhost:8000/${image.url}`} alt={`Hình ảnh sản phẩm ${sanPham.id}`} />
             ))}
           </div>
+          <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
+          <div className="">
+          <NavLink to="/danh-sach-yeu-thich" className="NavLink">San Phẩm Yêu Thích</NavLink>
+        </div>
+
+        <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
+          {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
+
+          <DanhSachBinhLuan sanPhamId={sanPham.id} />
         </div>
       )}
     </div>

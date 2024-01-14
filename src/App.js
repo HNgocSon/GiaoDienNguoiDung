@@ -10,6 +10,9 @@ import DangNhapPage from './pages/dang-nhap-page';
 import ResetMatKhauPage from './pages/reset-mat-khau-page';
 import TrangChu from './pages/trang-chu.page';
 import KhachHangPage from './pages/khach-hang-page';
+import CapNhatKhachHang from './components/khach-hang-cpn/cap-nhat-khach-hang';
+import CapNhatMatKhau from './components/khach-hang-cpn/cap-nhat-mat-khau';
+import DanhSachYeuThich from './components/danh-sach-yeu-thich-cpn/danh-sach-yeu-thich';
 function App() {
   return (
     <>
@@ -21,12 +24,16 @@ function App() {
           <Route path="/dang-nhap" element={<DangNhapPage/>} />
           <Route path="/dang-ky" element={<DangKyPage/>} />
           <Route path="/tai-khoan" element={<KhachHangPage/>} />
+          <Route path="/cap-nhat-tai-khoan" element={<CapNhatKhachHang/>} />
+          <Route path="/cap-nhat-mat-khau" element={<CapNhatMatKhau/>} />
           <Route path="/forgot-password" element={<ResetMatKhauPage/>} />
+          <Route path="/danh-sach-yeu-thich" element={<DanhSachYeuThich/>} />
       </Routes>
       <Footer/>
 
     </>
   );
 }
+
 
 export default App;

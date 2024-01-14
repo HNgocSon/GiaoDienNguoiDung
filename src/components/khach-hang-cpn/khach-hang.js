@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { NavLink, useNavigate } from 'react-router-dom'; 
 
 function KhachHangCPN(props) {
 
@@ -45,6 +45,10 @@ function KhachHangCPN(props) {
             <h2>User Profile</h2>
             <p>Name: {userData.ten}</p>
             <p>Email: {userData.email}</p>
+            <p>số điện thoại: {userData.sdt}</p>
+            <p>địa Chỉ: {userData.dia_chi}</p>
+            <button><NavLink to="/cap-nhat-tai-khoan" >Cập Nhật thông tin tài khoản</NavLink></button>
+            <button><NavLink to="/cap-nhat-mat-khau" >Cập Nhật mật khẩu</NavLink></button>
           </div>
         ) : (
           <p>Failed to load user data.</p>

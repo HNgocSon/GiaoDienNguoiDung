@@ -52,3 +52,9 @@
     text-align: center;
     width: 100%;
 }
+
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }

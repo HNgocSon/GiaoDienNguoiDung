@@ -2,13 +2,7 @@
     text-align: center;
     margin: 20px;
   }
-  
-  .categories-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  
+
   /* CSS cho phần tử chứa dung lượng */
 .storage-info {
   display: flex;

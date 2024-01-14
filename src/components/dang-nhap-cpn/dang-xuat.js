@@ -8,6 +8,7 @@ const DangXuatCPN = () => {
 
     const handleLogout = async () => {
         try {
+     
             const accessToken = localStorage.getItem('dang_nhap_token');
 
            const response = await axios.post('http://127.0.0.1:8000/api/dang-xuat', null, {
@@ -29,6 +30,7 @@ const DangXuatCPN = () => {
             navigate('/dang-nhap');
     
         } catch (error) {
+            // localStorage.removeItem('dang_nhap_token');
             console.error('Đăng xuất không thành công:', error);
     
             Swal.fire({

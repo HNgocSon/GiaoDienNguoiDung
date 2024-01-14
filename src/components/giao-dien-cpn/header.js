@@ -17,15 +17,7 @@ const Header = () => {
         setIsLoggedIn(false); 
       }
     }, [navigate]);
-  
-    // const handleLogout = () => {
 
-    //   localStorage.removeItem('dang_nhap_token');
-    //   setIsLoggedIn(false); 
-    //   navigate('/dang-nhap'); 
-
-    // };
-    // onClick={handleLogout} 
     
 
   return (

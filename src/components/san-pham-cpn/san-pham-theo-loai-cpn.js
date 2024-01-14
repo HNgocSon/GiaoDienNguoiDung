@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import '../../stylecss/sanphamtheoloai.css';
+import { NavLink, useParams } from 'react-router-dom';
+import '../../stylecss/sanpham.css';
 const SanPhamTheoLoaiCPN = () => {
   const { id } = useParams();
   const [loaiSanPham, setLoaiSanPham] = useState({});
@@ -37,7 +37,7 @@ const SanPhamTheoLoaiCPN = () => {
     ) : (
       <div className="card">
         {loaiSanPham.ds_san_pham.map(sanPham => (
-          <div className="card-item" key={sanPham.id}>
+          <NavLink className="card-item" key={sanPham.id} to={`/san-pham/${sanPham.id}`}>
             {sanPham.hinh_anh && sanPham.hinh_anh.length > 0 ? (
               <img className="img" src={`http://localhost:8000/${sanPham.hinh_anh[0].url}`} alt={`Hình ảnh sản phẩm`} />
             ) : (
@@ -48,7 +48,7 @@ const SanPhamTheoLoaiCPN = () => {
               <p className="">Dung Lượng: {sanPham.san_pham_bien_the[0].dung_luong}</p>
               <p className="price">Giá: {sanPham.san_pham_bien_the[0].gia}</p>
             </div>
-          </div>
+          </NavLink>
         ))}
       </div>
     )}

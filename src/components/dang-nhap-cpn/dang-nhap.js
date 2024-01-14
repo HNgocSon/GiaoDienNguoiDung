@@ -41,7 +41,7 @@ const DangNhapCPN = () => {
     
       setTimeout(() => {
         navigate('/');
-      }, 500);
+      }, 30);
     }
 
     } catch (error) {
