@@ -4,6 +4,8 @@ import { useParams, NavLink } from 'react-router-dom';
 import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
 import BinhLuan from '../binh-luan-cpn/binh-luan';
 import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
+import '../../SanPham.css';
+
 const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
   const [sanPham, setSanPham] = useState(null);
@@ -18,8 +20,6 @@ const ChiTietSanPhamCPN = () => {
         const product = response.data.data;
 
         setSanPham(product);
-
-        
         setBienThe(product.san_pham_bien_the[0]);
       } catch (error) {
         console.error('Error fetching product details:', error);
@@ -29,14 +29,12 @@ const ChiTietSanPhamCPN = () => {
     fetchData();
   }, [id]);
 
-  
   const chonBienThe = (variant) => {
     setBienThe(variant);
   };
 
-
   return (
-    <div>
+    <div className="ChiTietSanPhamCPN"> {/* Thêm className */}
       {sanPham && (
         <div>
           <h2>{sanPham.ten}</h2>
@@ -68,11 +66,11 @@ const ChiTietSanPhamCPN = () => {
             ))}
           </div>
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
-          <div className="">
-          <NavLink to="/danh-sach-yeu-thich" className="NavLink">San Phẩm Yêu Thích</NavLink>
-        </div>
+          <div className="NavLinkWrapper"> {/* Thêm className */}
+            <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>
+          </div>
 
-        <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
+          <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
           {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
 
           <DanhSachBinhLuan sanPhamId={sanPham.id} />

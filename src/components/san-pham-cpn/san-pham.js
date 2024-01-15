@@ -3,8 +3,7 @@ import axios from 'axios';
 import '../../stylecss/sanpham.css';
 import Skeleton from '@mui/material/Skeleton';
 import { NavLink } from 'react-router-dom';
-
-
+import '../../SanPham.css';
 
 const SanPhamCPN = () => {
 const [loading, setLoading] = useState(true);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import XoaKhoiDanhSachYeuThich from './xoa-khoi-danh-sach-yeu-thich';
+import '../../SanPham.css';
 
 const DanhSachYeuThich = () => {
   const [danhSachYeuThich, setDanhSachYeuThich] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const accessToken = localStorage.getItem('dang_nhap_token');
@@ -17,9 +17,8 @@ const DanhSachYeuThich = () => {
         });
         
         setDanhSachYeuThich(response.data.data);
-
       } catch (error) {
-        alert('không tải được danh sách yêu thích');
+        alert('Không tải được danh sách yêu thích');
         console.error('Error fetching favorite list:', error);
       }
     };
@@ -27,14 +26,12 @@ const DanhSachYeuThich = () => {
     fetchData();
   }, []);
 
- 
-
   return (
-    <div>
+    <div className="danh-sach-yeu-thich-container">
       <h2>Danh Sách Yêu Thích</h2>
-      <ul>
+      <ul className="yeu-thich-list">
         {danhSachYeuThich.map((sanPhamYeuThich) => (
-          <li key={sanPhamYeuThich.id}>
+          <li key={sanPhamYeuThich.id} className="yeu-thich-item">
             {sanPhamYeuThich.san_pham.ten}
             <XoaKhoiDanhSachYeuThich sanPhamId={sanPhamYeuThich.san_pham.id}/>
           </li>
