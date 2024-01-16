@@ -19,7 +19,7 @@ function App() {
       <Routes>  
           <Route path="/" element={<TrangChu/>}/>
           <Route path="/loai-san-pham/:id" element={<SanPhamTheoLoaiPage/>} />
-          <Route path="/giohang" element={<GioHang/>} />
+          <Route path="/gio-hang" element={<GioHang/>} />
           <Route path="/san-pham/:id" element={<ChiTietSanPhamPage/>} />
           <Route path="/dang-nhap" element={<DangNhapPage/>} />
           <Route path="/dang-ky" element={<DangKyPage/>} />

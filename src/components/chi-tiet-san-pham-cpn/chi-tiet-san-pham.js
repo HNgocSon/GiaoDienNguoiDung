@@ -4,11 +4,13 @@ import { useParams, NavLink } from 'react-router-dom';
 import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
 import BinhLuan from '../binh-luan-cpn/binh-luan';
 import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
+
 const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
   const [sanPham, setSanPham] = useState(null);
   const [bienThe, setBienThe] = useState(null);
   const [openDanhGia, setOpenDanhGia] = useState(false);
+
 
   useEffect(() => {
 
@@ -60,7 +62,6 @@ const ChiTietSanPhamCPN = () => {
               <p>Price: {bienThe.gia}</p>
             </div>
           )}
-
           <h3>Images:</h3>
           <div>
             {sanPham.hinh_anh.map((image, index) => (
@@ -70,12 +71,14 @@ const ChiTietSanPhamCPN = () => {
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
           <div className="">
           <NavLink to="/danh-sach-yeu-thich" className="NavLink">San Phẩm Yêu Thích</NavLink>
-        </div>
+          </div>
 
-        <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
+          <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
           {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
 
           <DanhSachBinhLuan sanPhamId={sanPham.id} />
+
+
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const DanhSachBinhLuan = ({ sanPhamId, onClose }) => {
+const DanhSachBinhLuan = ({ sanPhamId }) => {
   const [danhSachBinhLuan, setDanhSachBinhLuan] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,6 @@ const DanhSachBinhLuan = ({ sanPhamId, onClose }) => {
           </li>
         ))}
       </ul>
-      <button onClick={onClose}>Đóng</button>
     </div>
   );
 };

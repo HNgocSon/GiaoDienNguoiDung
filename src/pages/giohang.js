@@ -1,12 +1,12 @@
+import GioHangCPN from "../components/gio-hang-cpn/gio-hang-item";
 
-import ThemGioHang from "../components/gio-hang-cpn/gio-hang-item";
-function GioHang(){
-  
-    return(
-    <>
-   <ThemGioHang/>
-    </>
+const GioHang = ({ gioHang }) => {
+    return (
+      <div>
+        <h2>Trang Giỏ Hàng</h2>
+        <GioHangCPN gioHang={gioHang} />
+      </div>
     );
-}
+  };
 
 export default GioHang;
