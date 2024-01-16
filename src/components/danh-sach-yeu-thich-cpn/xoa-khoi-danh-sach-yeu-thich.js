@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import '../../SanPham.css';
 
 const XoaKhoiDanhSachYeuThich = ({ sanPhamId }) => {
 
@@ -16,7 +17,7 @@ const XoaKhoiDanhSachYeuThich = ({ sanPhamId }) => {
         });
 
         Swal.fire({
-            icon: 'error', 
+            icon: 'success', 
             title: 'Xóa Thành công!',
             text:  response.data.message,
             confirmButtonColor: '#000000',
@@ -32,7 +33,7 @@ const XoaKhoiDanhSachYeuThich = ({ sanPhamId }) => {
   };
 
   return (
-    <button onClick={handleXoaKhoiDanhSachYeuThich}>Xóa khỏi danh sách yêu thích</button>
+    <button className="XoaYeuThich" onClick={handleXoaKhoiDanhSachYeuThich}>Xóa khỏi danh sách yêu thích</button>
   );
 };
 

@@ -17,7 +17,12 @@ const BinhLuan = ({ sanPhamId }) => {
           },
       });
 
-      alert(response.data.message);
+      alert(response.data.message)
+      .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
  
     } catch (error) {
       console.error('Error submitting review:', error);

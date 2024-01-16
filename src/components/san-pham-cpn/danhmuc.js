@@ -3,6 +3,8 @@
     import '../../stylecss/danhmuc.css';
     import Skeleton from '@mui/material/Skeleton';
     import { NavLink } from 'react-router-dom';
+    import '../../SanPham.css';
+
 
     const DanhMucSanPham = () => {
     const [dsLoaiSanPham, setDsLoaiSanPham] = useState([]);
@@ -44,7 +46,7 @@
                 <div className="categories-list">
                 {dsLoaiSanPham.map(dsLoaiSanPham => (
                     <NavLink key={dsLoaiSanPham.id} to={`/loai-san-pham/${dsLoaiSanPham.id}`}>
-                        <img src={`http://localhost:8000/${dsLoaiSanPham.img}`} alt={`${dsLoaiSanPham.ten_loai}`} />
+                        <img className="picDanhMuc" src={`http://localhost:8000/${dsLoaiSanPham.img}`} alt={`${dsLoaiSanPham.ten_loai}`} />
                     </NavLink>
                 ))}
                 </div>

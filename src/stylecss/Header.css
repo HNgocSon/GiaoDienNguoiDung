@@ -19,11 +19,10 @@
 
 }
 .headerAll .img img {
-  max-width: 50px;
+  max-width: 100px;
   max-height: 50px;
   position: relative; 
   left: 300px; 
-  margin-right: 150px;
 }
 
 .headerAll .bottom-section {

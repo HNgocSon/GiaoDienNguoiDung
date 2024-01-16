@@ -4,13 +4,15 @@ import { useParams, NavLink } from 'react-router-dom';
 import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
 import BinhLuan from '../binh-luan-cpn/binh-luan';
 import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
+import ThemSanPhamVaoGioHang from '../gio-hang-cpn/them-vao-gio-hang';
+import '../../SanPham.css';
 
 const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
   const [sanPham, setSanPham] = useState(null);
   const [bienThe, setBienThe] = useState(null);
   const [openDanhGia, setOpenDanhGia] = useState(false);
-
+  const [soLuong, setSoLuong] = useState(1);
 
   useEffect(() => {
 
@@ -20,8 +22,6 @@ const ChiTietSanPhamCPN = () => {
         const product = response.data.data;
 
         setSanPham(product);
-
-        
         setBienThe(product.san_pham_bien_the[0]);
       } catch (error) {
         console.error('Error fetching product details:', error);
@@ -31,14 +31,18 @@ const ChiTietSanPhamCPN = () => {
     fetchData();
   }, [id]);
 
-  
   const chonBienThe = (variant) => {
     setBienThe(variant);
   };
 
+  
+  const chonSoLuong = (amount) => {
+    setSoLuong(Math.max(1, soLuong + amount));
+  };
+
 
   return (
-    <div>
+    <div className="ChiTietSanPhamCPN"> {/* Thêm className */}
       {sanPham && (
         <div>
           <h2>{sanPham.ten}</h2>
@@ -54,6 +58,7 @@ const ChiTietSanPhamCPN = () => {
               </li>
             ))}
           </ul>
+
           <h3>Selected Variant:</h3>
           {bienThe && (
             <div>
@@ -68,9 +73,16 @@ const ChiTietSanPhamCPN = () => {
               <img key={index} className="img" src={`http://localhost:8000/${image.url}`} alt={`Hình ảnh sản phẩm ${sanPham.id}`} />
             ))}
           </div>
+          <div>
+          <button onClick={() => chonSoLuong(-1)}>-</button>
+          <span>{soLuong}</span>
+          <button onClick={() => chonSoLuong(1)}>+</button>
+        </div>
+          <ThemSanPhamVaoGioHang sanPhamId={sanPham.id} bienTheId={bienThe.id} soLuong={soLuong} />
+              
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
-          <div className="">
-          <NavLink to="/danh-sach-yeu-thich" className="NavLink">San Phẩm Yêu Thích</NavLink>
+          <div className="NavLinkWrapper"> {/* Thêm className */}
+            <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>
           </div>
 
           <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>

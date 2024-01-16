@@ -25,6 +25,8 @@ const DanhSachBinhLuan = ({ sanPhamId }) => {
       <ul>
         {danhSachBinhLuan.map((binhLuan) => (
           <li key={binhLuan.id}>
+            {binhLuan.khach_hang.ten}
+            <br/>
             {binhLuan.comments}
           </li>
         ))}

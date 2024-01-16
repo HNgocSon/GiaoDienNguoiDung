@@ -10,7 +10,8 @@ const HeaderDN = () => {
     const pageNames = {
       '/dang-nhap': 'Đăng Nhập',
       '/forgot-password': 'Quên Mật Khẩu',
-      '/dang-ky':'Đăng Ký Tài khoản'
+      '/dang-ky':'Đăng Ký Tài khoản',
+      '/gio-hang':'Giỏ Hàng',
     };
     return pageNames[path] || path.substring(path.lastIndexOf('/') + 1);
   }

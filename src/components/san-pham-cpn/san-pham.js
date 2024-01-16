@@ -3,12 +3,13 @@ import axios from 'axios';
 import '../../stylecss/sanpham.css';
 import Skeleton from '@mui/material/Skeleton';
 import { NavLink } from 'react-router-dom';
-
-
+import TimKiem from '../tim-kiem-cpn/tim-kiem';
+// import '../../SanPham.css';
 
 const SanPhamCPN = () => {
 const [loading, setLoading] = useState(true);
 const [dsSanPham, setDsSanPham] = useState([]);
+const [timKiem, setTimKiem] = useState("");
 
 useEffect(() => {
     const fetchData = async () => {
@@ -24,18 +25,25 @@ useEffect(() => {
     fetchData();
 }, []);  
 
-  
+const handleTimKiem = (event) => {
+    setTimKiem(event.target.value);
+};
+
+const locSanPham = dsSanPham.filter((sanPham) =>
+    sanPham.ten.toLowerCase().includes(timKiem.toLowerCase())
+);
+
 
 return (
     <div className="san-pham">
-     
+      <TimKiem onSearchChange={handleTimKiem} />
         <div className="card">
             {loading ? (
                 <div className="categories-list">
                     <Skeleton animation="wave"  width={100} height={100} />
                 </div>
             ) : (
-                dsSanPham.map(sanPham => (
+                locSanPham.map(sanPham => (
                     <NavLink key={sanPham.id} to={`/san-pham/${sanPham.id}`} className="card-item">
                         {sanPham.hinh_anh && sanPham.hinh_anh.length > 0 ? (
                             <img className="img" src={`http://localhost:8000/${sanPham.hinh_anh[0].url}`} alt={`Hình ảnh sản phẩm`} />
