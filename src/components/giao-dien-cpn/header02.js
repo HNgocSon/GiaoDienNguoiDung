@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../stylecss/header02.css';
 import { useLocation } from 'react-router-dom';
+import '../../stylecss/giohang.css';
 const HeaderDN = () => {
   const location = useLocation();
   const currentPath = location.pathname;
@@ -24,7 +25,7 @@ const HeaderDN = () => {
     <header className="simple-header">
       <div className="logo">
         <NavLink to="/">
-          <img src="logo192.png" alt="Logo" />
+          <img className='rounded-logo' src="logo-4.png" alt="Logo" />
         </NavLink>
       </div>
       <div className="login">

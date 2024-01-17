@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import '../../stylecss/giohang.css';
 const ThanhToanButton = ({ selectedProducts }) => {
 
   const handleCheckout = () => {
@@ -44,7 +44,7 @@ const ThanhToanButton = ({ selectedProducts }) => {
   };
 
   return (
-    <button onClick={handleCheckout}>Thanh Toán</button>
+    <button onClick={handleCheckout} className="thanh-toan-button">Thanh Toán</button>
   );
 };
 

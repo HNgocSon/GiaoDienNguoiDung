@@ -32,13 +32,13 @@ const SanPhamTheoLoaiCPN = () => {
         {loaiSanPham.ds_san_pham.map(sanPham => (
           <NavLink className="card-item" key={sanPham.id} to={`/san-pham/${sanPham.id}`}>
             {sanPham.hinh_anh && sanPham.hinh_anh.length > 0 ? (
-              <img className="img" src={`http://localhost:8000/${sanPham.hinh_anh[0].url}`} alt={`Hình ảnh sản phẩm`} />
+              <img className="imgSP" src={`http://localhost:8000/${sanPham.hinh_anh[0].url}`} alt={`Hình ảnh sản phẩm`} />
             ) : (
               <img className="img" src="/loading.jpg" alt="Ảnh mặc định" />
             )}
             <div className="card-content">
               <p className="name">Tên Sản Phẩm: {sanPham.ten}</p>
-              <p className="">Dung Lượng: {sanPham.san_pham_bien_the[0].dung_luong}</p>
+              <p className="dungluong">Dung Lượng: {sanPham.san_pham_bien_the[0].dung_luong}</p>
               <p className="price">Giá: {sanPham.san_pham_bien_the[0].gia}</p>
             </div>
           </NavLink>

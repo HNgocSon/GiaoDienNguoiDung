@@ -1,76 +1,86 @@
 
-.headerAll .header {
-  background-color: #D2B48C;
-  padding: 15px 0;
+.headerAll {
+  background-color: #ffd700; 
+  border-bottom: 1px solid #ccc;
 }
 
-.headerAll .top-section {
-  max-width: 80%;
+.header {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
 }
 
-.headerAll .notifications,
-.headerAll .support,
-.headerAll .auth {
-  margin-right: 20px;
-  color: white !important;
-
-}
-.headerAll .img img {
-  max-width: 100px;
-  max-height: 50px;
-  position: relative; 
-  left: 300px; 
-}
-
-.headerAll .bottom-section {
-  max-width: 90%; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.headerAll .search {
+.top-section {
   display: flex;
   align-items: center;
-  width: 50%;
-  margin-left: auto; 
-  margin-right: 10px;
 }
 
-.headerAll .search input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  margin-right: 10px;
-  height: 30px;
-}
-
-.headerAll .search-button {
-  background-color: #000;
-  color: #fff;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.headerAll .cart {
+.img {
   margin-right: auto;
 }
 
-
-.headerAll .NavLink {
-  text-decoration: none; 
-  color: white; 
+.img img {
+  max-width: 100px;
 }
 
-.headerAll .NavLink:hover {
-  
-  color: rgb(55, 53, 34);  
+.notifications,
+.support,
+.auth {
+  margin-left: 20px;
+}
+
+.notifications span,
+.support span,
+.auth a {
+  margin-left: 20px;
+  position: relative;
+}
+
+.notifications span:before {
+  content: '\1F514';  
+  font-family: 'Arial', sans-serif;
+  margin-right: 5px;
+}
+
+.support span:before {
+  content: '\1F4BB'; 
+  font-family: 'Arial', sans-serif;
+  margin-right: 5px;
+}
+
+.auth a:before {
+  content: '\1F464'; 
+  font-family: 'Arial', sans-serif;
+  margin-right: 5px;
+}
+
+.cart {
+  margin-left: auto; 
+}
+
+.cart a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  position: relative;
+}
+
+.cart a:before {
+  content: '\1F6D2';
+  font-family: 'Arial', sans-serif;
+  margin-right: 5px;
+}
+
+
+
+.NavLink {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    margin-right: 200px;
+    transition: color 0.3s ease-in-out;
+}
+.rounded-logo {
+  border-radius: 50%; /* Make the logo image circular */
 }

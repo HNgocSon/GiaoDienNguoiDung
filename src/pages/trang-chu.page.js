@@ -9,8 +9,8 @@ const TrangChu = () => {
   return (
     <>
     <Header/>
-    <DanhMucSanPham/>
     <SanPhamCPN/>
+    <DanhMucSanPham/>
     </>
   );
 };

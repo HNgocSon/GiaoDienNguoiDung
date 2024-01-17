@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import XoaSanPhamKhoiGioHang from './xoa-gio-hang';
 import ChonSanPham from '../thanh-toan-cpn/chon-san-pham';
 import ThanhToan from '../thanh-toan-cpn/thanh-toan';
-import '../../SanPham.css';
+import '../../stylecss/giohang.css';
 
 const DanhSachGioHang = () => {
   const [dsGioHang, setDsGioHang] = useState([]);
@@ -83,21 +83,23 @@ const DanhSachGioHang = () => {
   };
 
   return (
-    <>
-    {dsGioHang && dsGioHang.map((gioHang) => (
-        <li key={gioHang.id} className="">
-            <ChonSanPham productId={gioHang.id} onSelect={handleSelectProduct} />
-            <p>Số lượng: {gioHang.so_luong}</p>
+    <div className="danh-sach-gio-hang">
+      {dsGioHang && dsGioHang.map((gioHang) => (
+        <div key={gioHang.id} className="gio-hang-item">
+          <ChonSanPham productId={gioHang.id} onSelect={handleSelectProduct} />
+          <div className="gio-hang-info">
+            <p className="gio-hang-quantity">Số lượng: {gioHang.so_luong}</p>
             {/* Hiển thị các thông tin khác của giỏ hàng */}
-            <p>Tên sản phẩm: {gioHang.san_pham.ten}</p>
-            <p>Giá: {gioHang.san_pham_bien_the.gia}</p>
-            <p>Màu: {gioHang.san_pham_bien_the.mau}</p>
-            <p>Dung Lượng: {gioHang.san_pham_bien_the.dung_luong}</p>
+            <p className="gio-hang-name">Tên sản phẩm: {gioHang.san_pham.ten}</p>
+            <p className="gio-hang-price">Giá: {gioHang.san_pham_bien_the.gia}</p>
+            <p className="gio-hang-color">Màu: {gioHang.san_pham_bien_the.mau}</p>
+            <p className="gio-hang-capacity">Dung Lượng: {gioHang.san_pham_bien_the.dung_luong}</p>
             <XoaSanPhamKhoiGioHang XoaId={gioHang.id} />
-        </li>
+          </div>
+        </div>
       ))}
-       <ThanhToan selectedProducts={chonSanPham}/>
-    </>
+      <ThanhToan selectedProducts={chonSanPham} className="thanh-toan-button"/>
+    </div>
   );
 };
 

@@ -30,12 +30,10 @@ const Header = () => {
         
       <div className="img">
         <NavLink to="/" className="NavLink ">
-            <img src="/logo192.png" alt="Logo" />
+            <img className='rounded-logo' src="/logo-4.png" alt="Logo" />
         </NavLink>
         </div>
-        <div className="cart">
-          <NavLink to="/gio-hang" className="NavLink">Giỏ hàng</NavLink>
-        </div>
+        
         <div className="notifications">
           <span>Thông báo</span>
         </div>
@@ -51,6 +49,9 @@ const Header = () => {
           <NavLink to="/dang-nhap" className="NavLink" >Đăng nhập</NavLink> | <NavLink to="/dang-ky" className="NavLink" >Đăng ký</NavLink>
         </div>
         )}
+        <div className="cart">
+          <NavLink to="/gio-hang" className="NavLink">Giỏ hàng</NavLink>
+        </div>
       </div>
 
 
