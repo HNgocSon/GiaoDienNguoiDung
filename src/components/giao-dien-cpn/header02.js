@@ -13,6 +13,7 @@ const HeaderDN = () => {
       '/forgot-password': 'Quên Mật Khẩu',
       '/dang-ky':'Đăng Ký Tài khoản',
       '/gio-hang':'Giỏ Hàng',
+      '/tai-khoan':'Tài Khoản Người Dùng',
     };
     return pageNames[path] || path.substring(path.lastIndexOf('/') + 1);
   }
@@ -29,7 +30,7 @@ const HeaderDN = () => {
         </NavLink>
       </div>
       <div className="login">
-         <h1>{currentPageName}</h1>
+         <h1> {currentPageName}</h1>
       </div>
     </header>
     </div>

@@ -1,25 +1,38 @@
 import React from 'react'; 
 import { useEffect,useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { isTokenExpired } from '../dang-nhap-cpn/kiem-tra-token';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import '../../stylecss/Header.css';
 
 const Header = () => {
-
-
     const [dangNhap, setDangNhap] = useState(false);
-
+    const navigate = useNavigate();
 
     useEffect(() => {
 
       const accessToken = localStorage.getItem('dang_nhap_token');
+
+      if (isTokenExpired(accessToken)) {
+        localStorage.removeItem('dang_nhap_token');
+        Swal.fire({
+          icon: 'error',
+          title: 'Token Hết Hạn',
+          text: 'Vui lòng đăng nhập lại để xem giỏ hàng.',
+          confirmButtonColor: '#000000',
+        });
+        navigate('/dang-nhap');
+        return;
+      }
+
       setDangNhap(!!accessToken);
       
       if (!accessToken) {
         setDangNhap(false); 
       }
-    }, []);
+    }, [navigate]);
 
-   
     
 
   return (
@@ -33,7 +46,9 @@ const Header = () => {
             <img className='rounded-logo' src="/logo-4.png" alt="Logo" />
         </NavLink>
         </div>
-        
+        <div className="">
+          <NavLink to="/" className="NavLink" >Home</NavLink>
+        </div>
         <div className="notifications">
           <span>Thông báo</span>
         </div>

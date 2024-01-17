@@ -13,6 +13,7 @@ import KhachHangPage from './pages/khach-hang-page';
 import CapNhatKhachHang from './components/khach-hang-cpn/cap-nhat-khach-hang';
 import CapNhatMatKhau from './components/khach-hang-cpn/cap-nhat-mat-khau';
 import DanhSachYeuThich from './components/danh-sach-yeu-thich-cpn/danh-sach-yeu-thich';
+import HoaDonPage from './pages/hoa-don-page';
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<TrangChu/>}/>
           <Route path="/loai-san-pham/:id" element={<SanPhamTheoLoaiPage/>} />
           <Route path="/gio-hang" element={<GioHang/>} />
+          <Route path="/hoa-don" element={<HoaDonPage/>} />
           <Route path="/san-pham/:id" element={<ChiTietSanPhamPage/>} />
           <Route path="/dang-nhap" element={<DangNhapPage/>} />
           <Route path="/dang-ky" element={<DangKyPage/>} />

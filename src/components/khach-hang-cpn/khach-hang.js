@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'; 
+import {isTokenExpired} from '../dang-nhap-cpn/kiem-tra-token';
+import Swal from 'sweetalert2';
 import '../../KhachHang.css';
 
 function KhachHangCPN(props) {
@@ -10,10 +12,17 @@ function KhachHangCPN(props) {
     
   useEffect(() => {
     const accessToken = localStorage.getItem('dang_nhap_token');
-    console.log(accessToken);
 
-    if (!accessToken) {
+    if (isTokenExpired(accessToken)) {
+      localStorage.removeItem('dang_nhap_token');
+      Swal.fire({
+        icon: 'error',
+        title: 'Token Hết Hạn',
+        text: 'Vui lòng đăng nhập lại để xem giỏ hàng.',
+        confirmButtonColor: '#000000',
+      });
       navigate('/dang-nhap');
+      return;
     }
 
     const fetchData = async () => {

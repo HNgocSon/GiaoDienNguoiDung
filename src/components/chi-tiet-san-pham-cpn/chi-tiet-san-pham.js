@@ -45,10 +45,8 @@ const ChiTietSanPhamCPN = () => {
     <div className="ChiTietSanPhamCPN"> {/* Thêm className */}
       {sanPham && (
         <div>
-          <h2>{sanPham.ten}</h2>
-          <p>{sanPham.loai_san_pham.ten_loai}</p>
-
-          <h3>Variants:</h3>
+          <h2>tên sản phẩm: {sanPham.ten}</h2>
+          <p>loại : {sanPham.loai_san_pham.ten_loai}</p>
           <ul>
             {sanPham.san_pham_bien_the.map((variant) => (
               <li key={variant.id}>
@@ -58,13 +56,18 @@ const ChiTietSanPhamCPN = () => {
               </li>
             ))}
           </ul>
-
-          <h3>Selected Variant:</h3>
+          <h3>Chi Tiết Về Sản Phẩm </h3>
           {bienThe && (
             <div>
-              <p>{bienThe.dung_luong}</p>
-              <p>Màu sắc: {bienThe.mau}</p>
-              <p>Price: {bienThe.gia}</p>
+              <p>{bienThe.mo_ta}</p>
+              <p>Màng Hình: {bienThe.man_hinh}</p>
+              <p>Camera: {bienThe.camera}</p>
+              <p>Hệ Điều Hành: {bienThe.he_dieu_hanh}</p>
+              <p>Chip: {bienThe.chip}</p>
+              <p>Ram: {bienThe.ram}</p>
+              <p>Dung Lượng: {bienThe.dung_luong}</p>
+              <p>Màu : {bienThe.mau}</p>
+              <p>Giá: {bienThe.gia}</p>
             </div>
           )}
           <h3>Images:</h3>
@@ -81,7 +84,7 @@ const ChiTietSanPhamCPN = () => {
           <ThemSanPhamVaoGioHang sanPhamId={sanPham.id} bienTheId={bienThe.id} soLuong={soLuong} />
               
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
-          <div className="NavLinkWrapper"> {/* Thêm className */}
+          <div className="NavLinkWrapper"> 
             <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>
           </div>
 

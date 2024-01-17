@@ -22,15 +22,14 @@ const DanhSachBinhLuan = ({ sanPhamId }) => {
   return (
     <div>
       <h2>Bình Luận</h2>
-      <ul>
+      <div>
         {danhSachBinhLuan.map((binhLuan) => (
-          <li key={binhLuan.id}>
-            {binhLuan.khach_hang.ten}
-            <br/>
-            {binhLuan.comments}
-          </li>
+          <div key={binhLuan.id}>
+            <h3>Tài Khoản: {binhLuan.khach_hang.ten}</h3>
+            <p>: {binhLuan.comments}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
