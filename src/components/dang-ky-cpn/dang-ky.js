@@ -56,7 +56,7 @@ const DangKyCPN = () => {
     
     } catch (error) {
       console.error('Lỗi khi gửi dữ liệu:', error);
-      setError('Đăng Ký không thành công. Email Đã tồn tại hoặc không đúng');
+      setError(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -89,22 +89,22 @@ const DangKyCPN = () => {
         ) : (
           <form onSubmit={handleSubmit}>
             <label htmlFor="ten">Tên</label>
-            <input type="text" id="ten" name="ten" value={formData.ten} onChange={handleChange} required />
+            <input type="text" id="ten" name="ten" value={formData.ten} onChange={handleChange} />
 
             <label htmlFor="sdt">Số Điện Thoại</label>
-            <input type="tel" id="sdt" name="sdt" pattern="[0-9]{10}" value={formData.sdt} onChange={handleChange} required />
+            <input type="tel" id="sdt" name="sdt" value={formData.sdt} onChange={handleChange} />
             
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}  />
 
             <label htmlFor="password">Mật Khẩu</label>
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
 
             <label htmlFor="repassword">Nhập lại Mật Khẩu</label>
-            <input type="password" id="repassword" name="repassword" value={formData.repassword} onChange={handleChange} required />
+            <input type="password" id="repassword" name="repassword" value={formData.repassword} onChange={handleChange}  />
 
             <label htmlFor="dia_chi">Địa Chỉ:</label>
-            <input type="text" id="dia_chi" name="dia_chi" value={formData.dia_chi} onChange={handleChange} required />
+            <input type="text" id="dia_chi" name="dia_chi" value={formData.dia_chi} onChange={handleChange}  />
             {error && <div style={{ color: 'red' }}>{error}</div>}
             <button type="submit">Đăng Ký</button>
           </form>

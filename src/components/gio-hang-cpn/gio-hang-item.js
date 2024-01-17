@@ -1,75 +1,78 @@
-import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import XoaSanPhamKhoiGioHang from './xoa-gio-hang';
+import ChonSanPham from '../thanh-toan-cpn/chon-san-pham';
+import ThanhToan from '../thanh-toan-cpn/thanh-toan';
+import '../../SanPham.css';
 
-function ThemGioHang(props) {
-    const [cartItems, setCartItems] = useState([]);
+const DanhSachGioHang = () => {
+  const [dsGioHang, setDsGioHang] = useState([]);
+  const [chonSanPham, setChonSanPham] = useState([]);
 
-    useEffect(() => {
-        var items = localStorage.getItem('cartItems');
-        if (items != null) {
-            setCartItems(JSON.parse(items));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = localStorage.getItem('dang_nhap_token');
+    
+        if (!accessToken) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Vui Lòng Đăng Nhập',
+            text: 'Đăng nhập để xem được giỏ hàng.',
+            confirmButtonColor: '#000000', 
+          });
+          navigate('/dang-nhap');
+          return;
         }
-    }, []);
 
-    const XoaSp = (id) => {
-        console.log('Xoa', id)
-        var items = cartItems.filter((item) => item.id !== id);
-        setCartItems(items);
-        localStorage.setItem('cartItems', JSON.stringify(items));
+
+        const response = await axios.get('http://127.0.0.1:8000/api/gio-hang', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        setDsGioHang(response.data.data);
+      } catch (error) {
+        alert('Không tải được danh sách giỏ hàng');
+        console.error('Error fetching favorite list:', error);
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
+
+  const handleSelectProduct = (productId, isSelected) => {
+    if (isSelected) {
+      setChonSanPham([...chonSanPham, productId]);
+    } else {
+      const updatedSelectedProducts = chonSanPham.filter(id => id !== productId);
+      setChonSanPham(updatedSelectedProducts);
     }
+  };
 
-    const DatHang = () => {
-        localStorage.removeItem('cartItems');
-        setCartItems([]);
-    }
 
-    const giohangUI = () => {
-        if (cartItems.length > 0) {
-            return (
-                <div className="container mt-5">
-                    <div className="row">
-                        {cartItems.map(function (item) {
-                            return (
-                                <div key={item.id} className="col-md-4 mb-4">
-                                    <div className="card">
-                                        <img src="" className="card-img-top" alt="" />
-                                        <div className="card-body">
-                                            <h5 className="card-title">{item.ten}</h5>
-                                            <p className="card-text">Giá: {item.gia}</p>
-                                            <p className="card-text">Số Lượng: {item.so_luong}</p>
-                                            <p className="card-text">Thành Tiền: {item.gia * item.so_luong}</p>
-                                            <button className="btn btn-danger" onClick={() => XoaSp(item.id)}>Xóa</button>
-                                            <button className="btn btn-warning">Cập Nhật</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className="but mt-3">
-                        <button type="button" className="btn btn-secondary">
-                            <NavLink to="/" className="nav-link" activeclassname ="active">Tiếp Tục Mua Hàng</NavLink>
-                        </button>
-                        <button type="button" className="btn btn-primary">
-                            <NavLink to="/thanh-toan" className="nav-link" activeclassname ="active" onClick={DatHang}>Thanh Toán</NavLink>
-                        </button>
-                    </div>
-                </div>
-            );
-        }
-        return <div className="container mt-5">Không có sản phẩm nào trong giỏ hàng
-        <button type="button" className="btn btn-secondary">
-            <NavLink to="/" className="nav-link" activeclassname ="active">Quay Lại</NavLink>
-        </button>
-        </div>;
-        
-    }
+  return (
+    <>
+    {dsGioHang && dsGioHang.map((gioHang) => (
+        <li key={gioHang.id} className="">
+            <ChonSanPham productId={gioHang.id} onSelect={handleSelectProduct} />
+            <p>Số lượng: {gioHang.so_luong}</p>
+            {/* Hiển thị các thông tin khác của giỏ hàng */}
+            <p>Tên sản phẩm: {gioHang.san_pham.ten}</p>
+            <p>Giá: {gioHang.san_pham_bien_the.gia}</p>
+            <p>Màu: {gioHang.san_pham_bien_the.mau}</p>
+            <p>Dung Lượng: {gioHang.san_pham_bien_the.dung_luong}</p>
+            <XoaSanPhamKhoiGioHang XoaId={gioHang.id} />
+        </li>
+      ))}
+       <ThanhToan selectedProducts={chonSanPham}/>
+    </>
+  );
+};
 
-    return (
-        <div>
-            {giohangUI()}
-        </div>
-    );
-}
-
-export default ThemGioHang;
+export default DanhSachGioHang;

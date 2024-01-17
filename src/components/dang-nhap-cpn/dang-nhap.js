@@ -45,7 +45,7 @@ const DangNhapCPN = () => {
     }
 
     } catch (error) {
-      setError('Đăng nhập không thành công. Vui lòng kiểm tra lại email và password.');
+      setError(error.response.data.message);
     } finally {
      setLoading(false);
     }

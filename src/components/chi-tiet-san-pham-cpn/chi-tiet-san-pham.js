@@ -4,6 +4,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
 import BinhLuan from '../binh-luan-cpn/binh-luan';
 import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
+import ThemSanPhamVaoGioHang from '../gio-hang-cpn/them-vao-gio-hang';
 import '../../SanPham.css';
 
 const ChiTietSanPhamCPN = () => {
@@ -11,6 +12,7 @@ const ChiTietSanPhamCPN = () => {
   const [sanPham, setSanPham] = useState(null);
   const [bienThe, setBienThe] = useState(null);
   const [openDanhGia, setOpenDanhGia] = useState(false);
+  const [soLuong, setSoLuong] = useState(1);
 
   useEffect(() => {
 
@@ -33,6 +35,12 @@ const ChiTietSanPhamCPN = () => {
     setBienThe(variant);
   };
 
+  
+  const chonSoLuong = (amount) => {
+    setSoLuong(Math.max(1, soLuong + amount));
+  };
+
+
   return (
     <div className="ChiTietSanPhamCPN"> {/* Thêm className */}
       {sanPham && (
@@ -50,6 +58,7 @@ const ChiTietSanPhamCPN = () => {
               </li>
             ))}
           </ul>
+
           <h3>Selected Variant:</h3>
           {bienThe && (
             <div>
@@ -58,13 +67,19 @@ const ChiTietSanPhamCPN = () => {
               <p>Price: {bienThe.gia}</p>
             </div>
           )}
-
           <h3>Images:</h3>
           <div>
             {sanPham.hinh_anh.map((image, index) => (
               <img key={index} className="img" src={`http://localhost:8000/${image.url}`} alt={`Hình ảnh sản phẩm ${sanPham.id}`} />
             ))}
           </div>
+          <div>
+          <button onClick={() => chonSoLuong(-1)}>-</button>
+          <span>{soLuong}</span>
+          <button onClick={() => chonSoLuong(1)}>+</button>
+        </div>
+          <ThemSanPhamVaoGioHang sanPhamId={sanPham.id} bienTheId={bienThe.id} soLuong={soLuong} />
+              
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
           <div className="NavLinkWrapper"> {/* Thêm className */}
             <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>
@@ -74,6 +89,8 @@ const ChiTietSanPhamCPN = () => {
           {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
 
           <DanhSachBinhLuan sanPhamId={sanPham.id} />
+
+
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@ import React from 'react';
 import Footer from './components/giao-dien-cpn/footer';
 import ChiTietSanPhamPage from './pages/chi-tiet-page';
 import SanPhamTheoLoaiPage from './pages/san-pham-theo-loai-page';
-import GioHang from './pages/giohang';
+import GioHang from './pages/gio-hang';
 import DangKyPage from './pages/dang-ky-page';
 import DangNhapPage from './pages/dang-nhap-page';
 import ResetMatKhauPage from './pages/reset-mat-khau-page';
@@ -19,7 +19,7 @@ function App() {
       <Routes>  
           <Route path="/" element={<TrangChu/>}/>
           <Route path="/loai-san-pham/:id" element={<SanPhamTheoLoaiPage/>} />
-          <Route path="/giohang" element={<GioHang/>} />
+          <Route path="/gio-hang" element={<GioHang/>} />
           <Route path="/san-pham/:id" element={<ChiTietSanPhamPage/>} />
           <Route path="/dang-nhap" element={<DangNhapPage/>} />
           <Route path="/dang-ky" element={<DangKyPage/>} />

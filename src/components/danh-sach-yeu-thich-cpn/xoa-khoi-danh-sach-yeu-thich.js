@@ -17,7 +17,7 @@ const XoaKhoiDanhSachYeuThich = ({ sanPhamId }) => {
         });
 
         Swal.fire({
-            icon: 'error', 
+            icon: 'success', 
             title: 'Xóa Thành công!',
             text:  response.data.message,
             confirmButtonColor: '#000000',

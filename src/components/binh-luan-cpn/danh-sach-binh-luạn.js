@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const DanhSachBinhLuan = ({ sanPhamId, onClose }) => {
+const DanhSachBinhLuan = ({ sanPhamId }) => {
   const [danhSachBinhLuan, setDanhSachBinhLuan] = useState([]);
 
   useEffect(() => {
@@ -25,11 +25,12 @@ const DanhSachBinhLuan = ({ sanPhamId, onClose }) => {
       <ul>
         {danhSachBinhLuan.map((binhLuan) => (
           <li key={binhLuan.id}>
+            {binhLuan.khach_hang.ten}
+            <br/>
             {binhLuan.comments}
           </li>
         ))}
       </ul>
-      <button onClick={onClose}>Đóng</button>
     </div>
   );
 };

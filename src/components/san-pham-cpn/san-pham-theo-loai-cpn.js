@@ -21,13 +21,6 @@ const SanPhamTheoLoaiCPN = () => {
     fetchData();
   }, [id]);
 
-  // function Text(text, maxLength) {
-  //   if (text.length > maxLength) {
-  //     return text.substring(0, maxLength) + '...';
-  //   }
-  //   return text;
-  // }    <p className="description">{Text(sanPham.san_pham_bien_the[0].mo_ta, 15)}</p>
-  
 
   return (
     <div className="san-pham-theo-loai">
