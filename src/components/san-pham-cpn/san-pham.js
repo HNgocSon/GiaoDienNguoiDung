@@ -14,6 +14,7 @@ const [timKiem, setTimKiem] = useState("");
 useEffect(() => {
     const fetchData = async () => {
     try {
+        
         const response = await axios.get('http://127.0.0.1:8000/api/san-pham');
         setDsSanPham(response.data.data);
         setLoading(false);

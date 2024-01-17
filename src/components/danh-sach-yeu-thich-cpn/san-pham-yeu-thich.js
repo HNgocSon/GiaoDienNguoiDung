@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-
+import '../../stylecss/giohang.css';
 const ThemSanPhamYeuThich = ({ sanPhamId }) => {
     const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ const ThemSanPhamYeuThich = ({ sanPhamId }) => {
   };
 
   return (
-    <button onClick={handleAddToFavorite}>Thêm vào danh sách yêu thích</button>
+    <button onClick={handleAddToFavorite} className='them-yeu-thich'>Thêm vào danh sách yêu thích</button>
   );
 };
 

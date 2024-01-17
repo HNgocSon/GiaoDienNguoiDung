@@ -164,3 +164,7 @@
   flex-direction: column;
   align-items: center;
 }
+.picDanhMuc{
+  width: 100px;
+  height: 100px;
+}
