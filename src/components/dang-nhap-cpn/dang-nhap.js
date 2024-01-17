@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -14,9 +14,18 @@ const DangNhapCPN = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const isAuthenticated = !!localStorage.getItem('dang_nhap_token');
+    if (isAuthenticated) {
+      navigate('/');
+    }
+  }, [navigate]);
+
+
   const handleLogin = async () => {
     setLoading(true);
     try {
+
       const response = await axios.post('http://localhost:8000/api/dang-nhap', {
         email: email,
         password: password,
@@ -29,7 +38,6 @@ const DangNhapCPN = () => {
 
     } else {
       const { access_token } = response.data;
-
       localStorage.setItem('dang_nhap_token', access_token);
 
       Swal.fire({

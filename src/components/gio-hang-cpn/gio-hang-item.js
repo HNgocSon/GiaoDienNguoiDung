@@ -29,6 +29,18 @@ const DanhSachGioHang = () => {
           return;
         }
 
+        if (isTokenExpired(accessToken)) {
+            localStorage.removeItem('dang_nhap_token');
+            Swal.fire({
+              icon: 'error',
+              title: 'Token Hết Hạn',
+              text: 'Vui lòng đăng nhập lại để xem giỏ hàng.',
+              confirmButtonColor: '#000000',
+            });
+            navigate('/dang-nhap');
+            return;
+          }
+
 
         const response = await axios.get('http://127.0.0.1:8000/api/gio-hang', {
           headers: {
@@ -55,6 +67,20 @@ const DanhSachGioHang = () => {
     }
   };
 
+  const isTokenExpired = (token) => {
+    if (!token) {
+      return true;
+    }
+
+    try {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      const currentTime = Math.floor(Date.now() / 1000);
+      return decodedToken.exp < currentTime;
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return true;
+    }
+  };
 
   return (
     <>
