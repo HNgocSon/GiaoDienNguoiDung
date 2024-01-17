@@ -58,7 +58,7 @@ const DangNhapCPN = () => {
           <div className="dang_nhap">
       <div className="login-page">
         <div className="left-section">
-          <img src="logo512.png" alt="Login" className="image" />
+          <img src="logo-4.png" alt="Login" className="image" />
         </div>
         <div className="right-section">
           <div className="login-container">

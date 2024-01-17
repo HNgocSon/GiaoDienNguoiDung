@@ -24,7 +24,7 @@ const HeaderDN = () => {
     <header className="simple-header">
       <div className="logo">
         <NavLink to="/">
-          <img src="logo192.png" alt="Logo" />
+          <img src="logo-4.png" alt="Logo" />
         </NavLink>
       </div>
       <div className="login">

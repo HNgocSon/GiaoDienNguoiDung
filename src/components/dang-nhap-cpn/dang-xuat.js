@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-  
+import '../../stylecss/dangxuat.css';
 const DangXuatCPN = () => {
     const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ const DangXuatCPN = () => {
     
   
     return (
-      <button onClick={handleLogout}>Đăng Xuất</button>
+      <button className='dangxuat' onClick={handleLogout}>Đăng Xuất</button>
     );
 
 };
