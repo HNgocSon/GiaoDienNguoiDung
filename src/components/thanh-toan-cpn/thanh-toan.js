@@ -10,13 +10,13 @@ const ThanhToanButton = ({ selectedProducts }) => {
       Swal.fire({
         icon: 'warning',
         title: 'Chưa chọn sản phẩm',
-        text: 'Vui lòng chọn ít nhất một sản phẩm để thanh toán.',
+        text: 'Vui lòng chọn ít nhất một sản phẩm để Mua.',
       });
       return;
     }
     const accessToken = localStorage.getItem('dang_nhap_token');
 
-    axios.post('http://127.0.0.1:8000/api/thanh-toan', { gio_hang_ids: selectedProducts }, {
+    axios.post('http://127.0.0.1:8000/api/mua-hang', { gio_hang_ids: selectedProducts }, {
       headers: {
         'Authorization': `Bearer ${accessToken}`, 
       },
@@ -24,7 +24,7 @@ const ThanhToanButton = ({ selectedProducts }) => {
     .then(response => {
         Swal.fire({
           icon: 'success',
-          title: 'Thanh toán thành công!',
+          title: 'Mua Hàng thành công!',
           text: response.data.message,
         }).then((result) => {
           if (result.isConfirmed) {
@@ -44,7 +44,7 @@ const ThanhToanButton = ({ selectedProducts }) => {
   };
 
   return (
-    <button onClick={handleCheckout} className="thanh-toan-button">Thanh Toán</button>
+    <button onClick={handleCheckout} className="thanh-toan-button">Mua Hàng</button>
   );
 };
 

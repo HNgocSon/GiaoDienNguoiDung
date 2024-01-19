@@ -6,6 +6,7 @@ import BinhLuan from '../binh-luan-cpn/binh-luan';
 import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
 import ThemSanPhamVaoGioHang from '../gio-hang-cpn/them-vao-gio-hang';
 import '../../SanPham.css';
+import DanhGiaCPN from '../danh-gia-cpn/danh-gia';
 
 const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
@@ -84,14 +85,27 @@ const ChiTietSanPhamCPN = () => {
           <ThemSanPhamVaoGioHang sanPhamId={sanPham.id} bienTheId={bienThe.id} soLuong={soLuong} />
               
           <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
+          
           <div className="NavLinkWrapper"> 
             <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>
           </div>
 
-          <button onClick={() => setOpenDanhGia(true)}>Đánh Giá</button>
+          <div>
+            <label>Đánh Giá Vê Sản Phẩm</label>
+            <DanhGiaCPN id={sanPham.id}/>
+          </div>
+
+
+
+
+          <button onClick={() => setOpenDanhGia(true)}>Bình Luận</button>
           {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
 
           <DanhSachBinhLuan sanPhamId={sanPham.id} />
+
+       
+
+
 
 
         </div>

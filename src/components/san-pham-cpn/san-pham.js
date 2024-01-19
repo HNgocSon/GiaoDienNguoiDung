@@ -35,7 +35,13 @@ const locSanPham = dsSanPham.filter((sanPham) =>
     (sanPham.san_pham_bien_the && sanPham.san_pham_bien_the.length > 0 &&
         sanPham.san_pham_bien_the.some((bienThe) =>
             bienThe.dung_luong.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.ram.toLowerCase().includes(timKiem.toLowerCase())
+            bienThe.ram.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.man_hinh.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.chip.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.pin.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.he_dieu_hanh.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.mau.toLowerCase().includes(timKiem.toLowerCase()) ||
+            bienThe.camera.toLowerCase().includes(timKiem.toLowerCase())
         )
     )
 );

@@ -18,15 +18,10 @@ const BinhLuan = ({ sanPhamId }) => {
       });
 
       alert(response.data.message)
-      .then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
- 
+       window.location.reload();
     } catch (error) {
       console.error('Error submitting review:', error);
-      alert('Có lỗi khi gửi đánh giá.');
+      alert('Có lỗi khi gửi Bình Luận.');
     }
   };
 

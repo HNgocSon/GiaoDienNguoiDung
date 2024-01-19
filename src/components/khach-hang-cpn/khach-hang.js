@@ -32,7 +32,7 @@ function KhachHangCPN(props) {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        setUserData(response.data.user);
+        setUserData(response.data.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

@@ -36,7 +36,7 @@ const DanhSachGioHang = () => {
             Swal.fire({
               icon: 'error',
               title: 'Token Hết Hạn',
-              text: 'Vui lòng đăng nhập lại để xem giỏ hàng.',
+              text: 'Vui lòng đăng nhập lại.',
               confirmButtonColor: '#000000',
             });
             navigate('/dang-nhap');

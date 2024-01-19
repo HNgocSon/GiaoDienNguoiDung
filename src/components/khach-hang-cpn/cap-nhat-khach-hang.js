@@ -27,7 +27,7 @@ const CapNhatKhachHang = () => {
           },
         });
 
-        setThongTin(response.data.user);
+        setThongTin(response.data.data);
       } catch (error) {
         console.error('Lỗi:', error);
         setMessage('Đã xảy ra lỗi khi lấy thông tin tài khoản hiện tại.');

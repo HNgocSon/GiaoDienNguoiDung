@@ -43,7 +43,7 @@ const DangNhapCPN = () => {
       Swal.fire({
         icon: 'success',
         title: 'Đăng nhập thành công!',
-        text: 'Chào mừng bạn quay trở lại.',
+        text: response.data.message,
         confirmButtonColor: '#000000', 
       });
     

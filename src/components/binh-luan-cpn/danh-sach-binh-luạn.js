@@ -25,8 +25,8 @@ const DanhSachBinhLuan = ({ sanPhamId }) => {
       <div>
         {danhSachBinhLuan.map((binhLuan) => (
           <div key={binhLuan.id}>
-            <h3>Tài Khoản: {binhLuan.khach_hang.ten}</h3>
-            <p>: {binhLuan.comments}</p>
+            <label>Tài Khoản: {binhLuan.khach_hang.ten}</label>
+            <p>comment: {binhLuan.comments}</p>
           </div>
         ))}
       </div>
