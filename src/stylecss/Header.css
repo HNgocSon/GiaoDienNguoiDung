@@ -82,5 +82,5 @@
     transition: color 0.3s ease-in-out;
 }
 .rounded-logo {
-  border-radius: 50%; /* Make the logo image circular */
+  border-radius: 50%;
 }
