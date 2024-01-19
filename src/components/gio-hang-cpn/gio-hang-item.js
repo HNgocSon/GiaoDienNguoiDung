@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import XoaSanPhamKhoiGioHang from './xoa-gio-hang';
 import ChonSanPham from '../thanh-toan-cpn/chon-san-pham';
 import ThanhToan from '../thanh-toan-cpn/thanh-toan';
+import {isTokenExpired} from '../dang-nhap-cpn/kiem-tra-token';
+
 import '../../stylecss/giohang.css';
 
 const DanhSachGioHang = () => {
@@ -29,6 +31,19 @@ const DanhSachGioHang = () => {
           return;
         }
 
+        if (isTokenExpired(accessToken)) {
+            localStorage.removeItem('dang_nhap_token');
+            Swal.fire({
+              icon: 'error',
+              title: 'Token Hết Hạn',
+              text: 'Vui lòng đăng nhập lại.',
+              confirmButtonColor: '#000000',
+            });
+            navigate('/dang-nhap');
+            return;
+          }
+
+
         const response = await axios.get('http://127.0.0.1:8000/api/gio-hang', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -37,8 +52,13 @@ const DanhSachGioHang = () => {
 
         setDsGioHang(response.data.data);
       } catch (error) {
-        alert('Không tải được danh sách giỏ hàng');
-        console.error('Error fetching favorite list:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi',
+          text: 'Đã có lỗi xảy ra khi tải danh sách giỏ hàng.',
+          confirmButtonColor: '#000000',
+        });
+        console.error('Error fetching cart list:', error);
       }
     };
 
@@ -54,6 +74,7 @@ const DanhSachGioHang = () => {
     }
   };
 
+
   return (
     <div className="danh-sach-gio-hang">
       {dsGioHang && dsGioHang.map((gioHang) => (
@@ -61,7 +82,6 @@ const DanhSachGioHang = () => {
           <ChonSanPham productId={gioHang.id} onSelect={handleSelectProduct} />
           <div className="gio-hang-info">
             <p className="gio-hang-quantity">Số lượng: {gioHang.so_luong}</p>
-            {/* Hiển thị các thông tin khác của giỏ hàng */}
             <p className="gio-hang-name">Tên sản phẩm: {gioHang.san_pham.ten}</p>
             <p className="gio-hang-price">Giá: {gioHang.san_pham_bien_the.gia}</p>
             <p className="gio-hang-color">Màu: {gioHang.san_pham_bien_the.mau}</p>

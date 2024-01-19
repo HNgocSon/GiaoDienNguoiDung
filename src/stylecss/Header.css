@@ -76,11 +76,11 @@
 
 .NavLink {
     text-decoration: none;
-    color: #3498db;
+    color: #000000;
     font-weight: bold;
     margin-right: 200px;
     transition: color 0.3s ease-in-out;
 }
 .rounded-logo {
-  border-radius: 50%;
+  border-radius: 50%; /* Make the logo image circular */
 }
