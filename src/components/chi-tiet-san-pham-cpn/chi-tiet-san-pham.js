@@ -46,8 +46,8 @@ const ChiTietSanPhamCPN = () => {
     <div className="ChiTietSanPhamCPN"> {/* Thêm className */}
       {sanPham && (
         <div>
-          <h2>tên sản phẩm: {sanPham.ten}</h2>
-          <p>loại : {sanPham.loai_san_pham.ten_loai}</p>
+          <h2>Tên sản phẩm: {sanPham.ten}</h2>
+          <p>Loại : {sanPham.loai_san_pham.ten_loai}</p>
           <ul>
             {sanPham.san_pham_bien_the.map((variant) => (
               <li key={variant.id}>
@@ -61,7 +61,7 @@ const ChiTietSanPhamCPN = () => {
           {bienThe && (
             <div>
               <p>{bienThe.mo_ta}</p>
-              <p>Màng Hình: {bienThe.man_hinh}</p>
+              <p>Màn Hình: {bienThe.man_hinh}</p>
               <p>Camera: {bienThe.camera}</p>
               <p>Hệ Điều Hành: {bienThe.he_dieu_hanh}</p>
               <p>Chip: {bienThe.chip}</p>

@@ -4,7 +4,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { thayDoiTranThai } from './thay-doi-trang-thai';
 import ChiTietHoaDon from './chi-tiet-hoa-don';
 import '../../SanPham.css';
-
+import '../../stylecss/hoadon.css';
 
 const DsHoaDon = () => {
   const [loading, setLoading] = useState(true);
@@ -68,13 +68,13 @@ const DsHoaDon = () => {
 
 
   return (
-    <div>
-      <div>
-        <button onClick={() => chonTrangThai(0)}>Đã Mua</button>
-        <button onClick={() => chonTrangThai(1)}>Đã Duyệt</button>
-        <button onClick={() => chonTrangThai(2)}>Đang Giao</button>
-        <button onClick={() => chonTrangThai(3)}>Đã Giao</button>
-        <button onClick={() => chonTrangThai(4)}>Đã Hủy</button>
+    <div className="ds-hoa-don-container">
+      <div className="button-container">
+        <button className="button button-green" onClick={() => chonTrangThai(0)}>Đã Mua</button>
+        <button className="button button-blue" onClick={() => chonTrangThai(1)}>Đã Duyệt</button>
+        <button className="button button-green" onClick={() => chonTrangThai(2)}>Đang Giao</button>
+        <button className="button button-blue" onClick={() => chonTrangThai(3)}>Đã Giao</button>
+        <button className="button button-red" onClick={() => chonTrangThai(4)}>Đã Hủy</button>
       </div>
       {loading ? (
         <div className="">
@@ -82,7 +82,7 @@ const DsHoaDon = () => {
         </div>
       ) : (
         dsHoaDon.map((hoaDon) => (
-          <div key={hoaDon.id}>
+          <div key={hoaDon.id} className="text-container">
             <h1>Hóa Đơn {hoaDon.id}</h1>
             <p>ID: {hoaDon.id}</p>
             <p>Tổng tiền: {hoaDon.tong_tien}</p>

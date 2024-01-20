@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import '../../stylecss/binhluan.css';
 const BinhLuan = ({ sanPhamId }) => {
   const [comments, setComments] = useState('');
 
   const handleSubmit = async () => {
     try {
-
       const accessToken = localStorage.getItem('dang_nhap_token');
       const response = await axios.post('http://127.0.0.1:8000/api/them-binh-luan', {
         comments: comments,
-        san_pham: sanPhamId, 
-      },{
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+        san_pham: sanPhamId,
+      }, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
-      alert(response.data.message)
-       window.location.reload();
+      alert(response.data.message);
+      window.location.reload();
     } catch (error) {
       console.error('Error submitting review:', error);
       alert('Có lỗi khi gửi Bình Luận.');
@@ -26,13 +25,13 @@ const BinhLuan = ({ sanPhamId }) => {
   };
 
   return (
-    <div>
-      <h2>Bình Luận</h2>
+    <div className="binh-luan-container">
+      <h2 className="binh-luan-title">Bình Luận</h2>
       <div>
-        <label>Bình luận:</label>
-        <textarea value={comments} onChange={(e) => setComments(e.target.value)}></textarea>
+        <label className="binh-luan-label">Bình luận:</label>
+        <textarea className="binh-luan-textarea" value={comments} onChange={(e) => setComments(e.target.value)}></textarea>
       </div>
-      <button onClick={handleSubmit}>Gửi Bình Luận</button>
+      <button className="binh-luan-button" onClick={handleSubmit}>Gửi Bình Luận</button>
     </div>
   );
 };

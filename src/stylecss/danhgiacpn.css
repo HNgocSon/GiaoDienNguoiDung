@@ -1,0 +1,33 @@
+.danh-gia-container {
+    margin-top: 20px;
+  }
+  
+  .danh-gia-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .danh-gia-item p {
+    margin: 0;
+  }
+  
+  .tong-so-sao {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .ten-khach-hang {
+    font-weight: bold;
+  }
+  
+  .so-sao {
+    color: #f8d150;
+  }
+  
+  .danh-gia-comments {
+    margin-top: 8px;
+  }
+  

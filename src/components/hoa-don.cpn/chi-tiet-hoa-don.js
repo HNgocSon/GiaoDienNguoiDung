@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DanhGiaSanPham from '../danh-gia-cpn/them-danh-gia';
-
+import '../../stylecss/chitiethoadon.css';
 const ChiTietHoaDon = ({ chiTietHoaDon, hoaDonId, dongChiTiet }) => {
     const  [danhGia, setHienThiDanhGia] = useState(false);
 
