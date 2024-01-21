@@ -36,11 +36,7 @@ const ThemSanPhamVaoGioHang = ({ sanPhamId, bienTheId, soLuong }) => {
             title: 'Thêm Sản thành công!',
             text: response.data.message,
             confirmButtonColor: '#000000',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
+            })
 
     } catch (error) {
         console.log(error.response.data);

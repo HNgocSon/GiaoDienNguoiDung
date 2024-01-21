@@ -24,10 +24,27 @@
   }
   
   .so-sao {
-    color: #f8d150;
+    color: #ffc107; 
   }
   
   .danh-gia-comments {
     margin-top: 8px;
   }
+
+  .soSao .filter-buttons {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các nút */
+  }
   
+  .soSao .filter-buttons button {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #ffc107; 
+    border: none;
+    cursor: pointer;  
+    transition: border-color 0.3s ease; 
+    border: 2px solid #ffffff; 
+  }
+  .soSao .filter-buttons button:hover {
+    border-color: #000000; 
+  }  

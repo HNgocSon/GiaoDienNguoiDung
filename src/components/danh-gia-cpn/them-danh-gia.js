@@ -59,7 +59,7 @@ const DanhGiaSanPham = ({ hoaDonId, sanPhamId, setHienThiDanhGia, daDanhGia }) =
           </span>
         ))}
       </div>
-      <label>Bình luận:</label>
+      <label>Cảm Nhận: </label>
       <textarea value={comments} onChange={(e) => setComments(e.target.value)}></textarea>
       <button onClick={submitReview}>Gửi Đánh Giá</button>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../../stylecss/binhluan.css';
-const BinhLuan = ({ sanPhamId }) => {
+const BinhLuan = () => {
   const [comments, setComments] = useState('');
 
   const handleSubmit = async () => {
@@ -9,7 +9,6 @@ const BinhLuan = ({ sanPhamId }) => {
       const accessToken = localStorage.getItem('dang_nhap_token');
       const response = await axios.post('http://127.0.0.1:8000/api/them-binh-luan', {
         comments: comments,
-        san_pham: sanPhamId,
       }, {
         headers: {
           Authorization: `Bearer ${accessToken}`,

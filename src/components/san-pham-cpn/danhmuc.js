@@ -3,7 +3,6 @@
     import '../../stylecss/danhmuc.css';
     import Skeleton from '@mui/material/Skeleton';
     import { NavLink } from 'react-router-dom';
-    import '../../SanPham.css';
 
 
     const DanhMucSanPham = () => {
@@ -24,15 +23,6 @@
         fetchData();
     }, []);  
 
-   
-
-    // function Text(text, maxLength) {
-    //     if (text.length > maxLength) {
-    //       return text.substring(0, maxLength) + '...';
-    //     }
-    //     return text;
-    //   }
-    //   <p className="description">Mô tả: {Text(bienThe.mo_ta, 15)}</p> giới hạn số chữ được hiên
 
     return (
         <>

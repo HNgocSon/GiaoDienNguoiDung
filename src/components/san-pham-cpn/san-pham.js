@@ -4,52 +4,57 @@ import '../../stylecss/sanpham.css';
 import Skeleton from '@mui/material/Skeleton';
 import { NavLink } from 'react-router-dom';
 import TimKiem from '../tim-kiem-cpn/tim-kiem';
-import '../../SanPham.css';
-
+import LocSanPhamTheoGia from '../loc-san-pham-cpn/loc-theo-gia';
+import DanhMucSanPham from './danhmuc';
 const SanPhamCPN = () => {
 const [loading, setLoading] = useState(true);
 const [dsSanPham, setDsSanPham] = useState([]);
+const [locSanPham, setLocSanPham] = useState([]);
 const [timKiem, setTimKiem] = useState("");
+const [locTheoGia, setLocTheoGia] = useState("");
 
 useEffect(() => {
     const fetchData = async () => {
-    try {
-        
-        const response = await axios.get('http://127.0.0.1:8000/api/san-pham');
-        setDsSanPham(response.data.data);
-        setLoading(false);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/san-pham');
+            setDsSanPham(response.data.data);
+            setLocSanPham(response.data.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     };
-
     fetchData();
 }, []);  
 
 const handleTimKiem = (event) => {
     setTimKiem(event.target.value);
+    console.log('Giá trị timKiem:', timKiem);
 };
 
-const locSanPham = dsSanPham.filter((sanPham) =>
-    sanPham.ten.toLowerCase().includes(timKiem.toLowerCase()) ||
-    (sanPham.san_pham_bien_the && sanPham.san_pham_bien_the.length > 0 &&
-        sanPham.san_pham_bien_the.some((bienThe) =>
-            bienThe.dung_luong.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.ram.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.man_hinh.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.chip.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.pin.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.he_dieu_hanh.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.mau.toLowerCase().includes(timKiem.toLowerCase()) ||
-            bienThe.camera.toLowerCase().includes(timKiem.toLowerCase())
-        )
-    )
-);
+const handleLocGia = (event) => {
+    setLocTheoGia(event.target.value);
+    console.log('Giá trị locGia:', locTheoGia);
+  };
 
 
 return (
     <div className="san-pham">
-      <TimKiem onSearchChange={handleTimKiem} />
+        <TimKiem
+        onSearchChange={handleTimKiem}
+        products={dsSanPham}
+        setFilteredProducts={setLocSanPham}
+      />
+
+    <DanhMucSanPham/>
+
+      <LocSanPhamTheoGia
+        locTheoGia={locTheoGia}
+        onFilterChange={handleLocGia}
+        products={dsSanPham}
+        setFilteredProducts={setLocSanPham}
+      />
+
         <div className="card">
             {loading ? (
                 <div className="categories-list">

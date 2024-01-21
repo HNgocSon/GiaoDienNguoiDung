@@ -13,6 +13,7 @@ const DsHoaDon = () => {
   const [chiTietHoaDon, setChiTietHoaDon] = useState(null);
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
         const accessToken = localStorage.getItem('dang_nhap_token');
@@ -78,7 +79,10 @@ const DsHoaDon = () => {
       </div>
       {loading ? (
         <div className="">
-          <Skeleton animation="wave" width={100} height={100} />
+          <Skeleton animation="wave" width={100} height={50} />
+          <Skeleton animation="wave" width={50} height={40} />
+          <Skeleton animation="wave" width={200} height={40} />
+          <Skeleton animation="wave" width={150} height={40} />
         </div>
       ) : (
         dsHoaDon.map((hoaDon) => (

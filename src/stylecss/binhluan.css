@@ -34,4 +34,17 @@
   .binh-luan-button:hover {
     background-color: #45a049;
   }
+
+  .binhLuanContainer {
+    border: 1px solid rgb(242, 20, 20); /* Viền xung quanh mỗi ô bình luận */
+    padding: 10px; /* Khoảng cách giữa nội dung và viền của ô bình luận */
+    margin-bottom: 10px; /* Khoảng cách giữa các ô bình luận */
+  }
+  .xoa{
+    color: #333;
+    text-decoration: none;
+  }
+  .xoa:hover{
+    color: #f4320c;
+  }
   

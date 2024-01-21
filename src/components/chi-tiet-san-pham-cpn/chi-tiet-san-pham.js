@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, NavLink } from 'react-router-dom';
 import ThemSanPhamYeuThich from '../danh-sach-yeu-thich-cpn/san-pham-yeu-thich';
-import BinhLuan from '../binh-luan-cpn/binh-luan';
-import DanhSachBinhLuan from '../binh-luan-cpn/danh-sach-binh-luạn';
 import ThemSanPhamVaoGioHang from '../gio-hang-cpn/them-vao-gio-hang';
 import '../../SanPham.css';
 import DanhGiaCPN from '../danh-gia-cpn/danh-gia';
@@ -12,7 +10,6 @@ const ChiTietSanPhamCPN = () => {
   const { id } = useParams();
   const [sanPham, setSanPham] = useState(null);
   const [bienThe, setBienThe] = useState(null);
-  const [openDanhGia, setOpenDanhGia] = useState(false);
   const [soLuong, setSoLuong] = useState(1);
 
   useEffect(() => {
@@ -91,22 +88,9 @@ const ChiTietSanPhamCPN = () => {
           </div>
 
           <div>
-            <label>Đánh Giá Vê Sản Phẩm</label>
+            <h1>Đánh Giá Vê Sản Phẩm</h1>
             <DanhGiaCPN id={sanPham.id}/>
           </div>
-
-
-
-
-          <button onClick={() => setOpenDanhGia(true)}>Bình Luận</button>
-          {openDanhGia && <BinhLuan sanPhamId={sanPham.id} />}
-
-          <DanhSachBinhLuan sanPhamId={sanPham.id} />
-
-       
-
-
-
 
         </div>
       )}
