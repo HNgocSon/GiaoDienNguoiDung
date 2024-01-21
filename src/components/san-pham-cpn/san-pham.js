@@ -15,7 +15,7 @@ const SanPhamCPN = () => {
   const [timKiem, setTimKiem] = useState("");
   const [locTheoGia, setLocTheoGia] = useState("");
   const [trang, setTrang] = useState(1);
-  const itemsPerPage = 1; 
+  const itemsPerPage = 20; 
 
   useEffect(() => {
     const fetchData = async () => {

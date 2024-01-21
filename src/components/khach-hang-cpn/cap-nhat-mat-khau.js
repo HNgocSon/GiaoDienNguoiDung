@@ -38,7 +38,7 @@ const CapNhatMatKhau = () => {
       }
     } catch (error) {
       console.error('Lỗi:', error);
-      setMessage('Đã xảy ra lỗi khi cập nhật Mật Khẩu.');
+      setMessage(error.response.data.error);
     }
   };
 
