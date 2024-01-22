@@ -36,4 +36,14 @@
     outline: none;
     border-color: #555;
   }
+  .loc-san-pham {
+    margin-bottom: 20px;
+  }
   
+  .loc-theo-gia-select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
