@@ -1,8 +1,4 @@
-.picDanhMuc{
-  width: 200px;
-  height: 200px;
-}
-/* ChiTietSanPhamCPN.css */
+
 
 .ChiTietSanPhamCPN {
   max-width: 800px;
@@ -165,6 +161,15 @@
   align-items: center;
 }
 .picDanhMuc{
-  width: 100px;
-  height: 100px;
+  width: 10%;
+  height: 10%;
+}
+.price{
+  color: #c0392b;
+}
+.name:hover{
+color: #3498db;
+}
+.storage-variant:hover{
+color: #3498db;
 }
