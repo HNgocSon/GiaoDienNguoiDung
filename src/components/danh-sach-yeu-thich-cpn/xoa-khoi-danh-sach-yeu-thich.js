@@ -3,13 +3,14 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import '../../SanPham.css';
 
-const XoaKhoiDanhSachYeuThich = ({ sanPhamId }) => {
+const XoaKhoiDanhSachYeuThich = ({ sanPhamId,bienTheId }) => {
 
   const handleXoaKhoiDanhSachYeuThich = async () => {
     try {
       const accessToken = localStorage.getItem('dang_nhap_token');
       const response = await axios.post('http://127.0.0.1:8000/api/xoa-yeu-thich',{
           san_pham: sanPhamId,
+          bien_the: bienTheId
         },{
           headers: {
             Authorization: `Bearer ${accessToken}`,

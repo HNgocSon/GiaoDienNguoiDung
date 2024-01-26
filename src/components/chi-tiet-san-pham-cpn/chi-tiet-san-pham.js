@@ -81,7 +81,7 @@ const ChiTietSanPhamCPN = () => {
         </div>
           <ThemSanPhamVaoGioHang sanPhamId={sanPham.id} bienTheId={bienThe.id} soLuong={soLuong} />
               
-          <ThemSanPhamYeuThich sanPhamId={sanPham.id} />
+          <ThemSanPhamYeuThich sanPhamId={sanPham.id} bienTheId={bienThe.id} />
           
           <div className="NavLinkWrapper"> 
             <NavLink to="/danh-sach-yeu-thich" className="NavLink">Sản Phẩm Yêu Thích</NavLink>

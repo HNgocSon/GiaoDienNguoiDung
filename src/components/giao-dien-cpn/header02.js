@@ -14,6 +14,7 @@ const HeaderDN = () => {
       '/dang-ky':'Đăng Ký Tài khoản',
       '/gio-hang':'Giỏ Hàng',
       '/tai-khoan':'Tài Khoản Người Dùng',
+      '/danh-sach-yeu-thich':'Sản Phẩm Yêu Thích',
     };
     return pageNames[path] || path.substring(path.lastIndexOf('/') + 1);
   }

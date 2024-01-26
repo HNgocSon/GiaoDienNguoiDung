@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import '../../stylecss/giohang.css';
-const ThemSanPhamYeuThich = ({ sanPhamId }) => {
+const ThemSanPhamYeuThich = ({ sanPhamId, bienTheId }) => {
     const navigate = useNavigate();
 
   const handleAddToFavorite = async () => {
@@ -23,6 +23,7 @@ const ThemSanPhamYeuThich = ({ sanPhamId }) => {
      
       const response = await axios.post('http://127.0.0.1:8000/api/san-pham-yeu-thich', {
         san_pham: sanPhamId,
+        bien_the: bienTheId
       }, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -40,7 +41,7 @@ const ThemSanPhamYeuThich = ({ sanPhamId }) => {
     Swal.fire({
         icon: 'error', 
         title: 'Không Thành công!',
-        text: error.response.data.message,
+        text: error.response.data.error,
         confirmButtonColor: '#000000',
         });
       console.error('Error adding to favorites:', error);

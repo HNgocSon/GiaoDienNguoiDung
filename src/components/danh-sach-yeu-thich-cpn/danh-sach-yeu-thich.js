@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import XoaKhoiDanhSachYeuThich from './xoa-khoi-danh-sach-yeu-thich';
+import ThemSanPhamVaoGioHang from '../gio-hang-cpn/them-vao-gio-hang';
 import '../../SanPham.css';
 
 const DanhSachYeuThich = () => {
@@ -32,8 +33,12 @@ const DanhSachYeuThich = () => {
       <ul className="yeu-thich-list">
         {danhSachYeuThich.map((sanPhamYeuThich) => (
           <li key={sanPhamYeuThich.id} className="yeu-thich-item">
-            {sanPhamYeuThich.san_pham.ten}
-            <XoaKhoiDanhSachYeuThich sanPhamId={sanPhamYeuThich.san_pham.id}/>
+           <p>Tên Sản Phẩm: {sanPhamYeuThich.san_pham.ten}</p>
+           <p>Giá: {sanPhamYeuThich.san_pham_bien_the.gia}</p>
+           <p>Màu: {sanPhamYeuThich.san_pham_bien_the.mau}</p>
+           <p>Dung lượng: {sanPhamYeuThich.san_pham_bien_the.dung_luong}</p>
+            <XoaKhoiDanhSachYeuThich sanPhamId={sanPhamYeuThich.san_pham.id} bienTheId={sanPhamYeuThich.san_pham_bien_the.id} />
+            <ThemSanPhamVaoGioHang sanPhamId={sanPhamYeuThich.san_pham.id} bienTheId={sanPhamYeuThich.san_pham_bien_the.id} soLuong={1} />
           </li>
         ))}
       </ul>
